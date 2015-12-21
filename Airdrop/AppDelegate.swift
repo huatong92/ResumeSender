@@ -8,11 +8,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        //url contains a URL to the file your app shall open
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         
-        //In my EXAMPLE I would want to read the file as a dictionary
-        let dictionary = NSDictionary(contentsOfURL: url)
+        do {
+            // extract text from the file
+            let text = try String(contentsOfURL: url, encoding: NSUTF8StringEncoding)
+            let arr = text.componentsSeparatedByString("%%%")
+            let senderId: String = arr[0]
+            let resumeUrl: String = arr[1]
+            
+            print(senderId)
+            print(resumeUrl)
+            
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let urlVC = mainStoryboard.instantiateViewControllerWithIdentifier("main") as! URLViewController
+            urlVC.sendThroughSocket(senderId, url: resumeUrl)
+            
+        } catch let error as NSError {
+            print("error loading from url \(url)")
+            print(error.localizedDescription)
+        }
         return true
     }
 
@@ -42,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
 
 }
 

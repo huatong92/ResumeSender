@@ -9,7 +9,7 @@
         <!--URL View Controller-->
         <scene sceneID="fBK-mq-FAv">
             <objects>
-                <viewController id="Av5-dm-Et4" customClass="URLViewController" customModule="Airdrop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main" id="Av5-dm-Et4" customClass="URLViewController" customModule="Airdrop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jQi-GC-UWs"/>
                         <viewControllerLayoutGuide type="bottom" id="z09-G6-v9l"/>
@@ -18,37 +18,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DjF-Az-LPQ">
-                                <rect key="frame" x="-5" y="75" width="330" height="485"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DjF-Az-LPQ">
+                                <rect key="frame" x="-5" y="51" width="330" height="509"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6az-Xi-5H9">
-                                <rect key="frame" x="284" y="30" width="27" height="37"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="27" id="psA-Vd-xn1"/>
+                                    <constraint firstAttribute="height" constant="509" id="cJZ-cw-V0c"/>
                                 </constraints>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="4.pic_hd.jpg">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uRI-X1-Gb8">
+                                <rect key="frame" x="20" y="13" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="send:" destination="Av5-dm-Et4" eventType="touchUpInside" id="PI3-hJ-yYD"/>
+                                    <action selector="testbtn:" destination="Av5-dm-Et4" eventType="touchUpInside" id="sRr-3Q-kgz"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DjF-Az-LPQ" firstAttribute="centerX" secondItem="LTv-Ma-00L" secondAttribute="centerX" id="A5K-gH-j3N"/>
-                            <constraint firstItem="z09-G6-v9l" firstAttribute="top" secondItem="DjF-Az-LPQ" secondAttribute="bottom" constant="8" symbolic="YES" id="JdJ-hO-P8U"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6az-Xi-5H9" secondAttribute="trailing" constant="-7" id="cag-mW-rgv"/>
-                            <constraint firstItem="6az-Xi-5H9" firstAttribute="top" secondItem="jQi-GC-UWs" secondAttribute="bottom" constant="10" id="fkw-qA-M8H"/>
-                            <constraint firstItem="DjF-Az-LPQ" firstAttribute="top" secondItem="6az-Xi-5H9" secondAttribute="bottom" constant="8" symbolic="YES" id="nXf-hk-kI7"/>
-                            <constraint firstItem="DjF-Az-LPQ" firstAttribute="leading" secondItem="LTv-Ma-00L" secondAttribute="leadingMargin" constant="-21" id="ybl-nA-OI2"/>
+                            <constraint firstItem="DjF-Az-LPQ" firstAttribute="centerX" secondItem="LTv-Ma-00L" secondAttribute="centerX" id="06O-Uc-92j"/>
+                            <constraint firstItem="DjF-Az-LPQ" firstAttribute="leading" secondItem="LTv-Ma-00L" secondAttribute="leadingMargin" constant="-21" id="MdI-Ta-kv4"/>
+                            <constraint firstItem="z09-G6-v9l" firstAttribute="top" secondItem="DjF-Az-LPQ" secondAttribute="bottom" constant="8" symbolic="YES" id="eie-wd-mB6"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="AYR-Ru-YDE"/>
                     <connections>
-                        <outlet property="sendBut" destination="6az-Xi-5H9" id="jXE-2q-kr5"/>
                         <outlet property="webView" destination="DjF-Az-LPQ" id="ytn-cO-fVh"/>
                     </connections>
                 </viewController>
@@ -57,7 +50,4 @@
             <point key="canvasLocation" x="608" y="498"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="4.pic_hd.jpg" width="57" height="72"/>
-    </resources>
 </document>

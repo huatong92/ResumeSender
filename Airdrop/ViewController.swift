@@ -1,4 +1,9 @@
 
+//  ViewController.swift
+//  Airdrop
+//
+//  Created by Hua Tong on 11/22/15.
+//  Copyright © 2015 Carlos Butron. All rights reserved.
 
 import UIKit
 

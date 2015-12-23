@@ -1,4 +1,9 @@
 
+//  AppDelegate.swift
+//  Airdrop
+//
+//  Created by Hua Tong on 11/22/15.
+//  Copyright © 2015 Carlos Butron. All rights reserved.
 
 
 import UIKit
@@ -19,10 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             print(senderId)
             print(resumeUrl)
-            
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let urlVC = mainStoryboard.instantiateViewControllerWithIdentifier("main") as! URLViewController
-            urlVC.sendThroughSocket(senderId, url: resumeUrl)
+ 
+            let urlVC = window?.rootViewController as? URLViewController
+            urlVC!.sendIdAndUrl(senderId, url: resumeUrl)
             
         } catch let error as NSError {
             print("error loading from url \(url)")

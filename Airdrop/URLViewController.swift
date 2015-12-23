@@ -1,20 +1,21 @@
 
+//  URLViewController.swift
+//  Airdrop
+//
+//  Created by Hua Tong on 11/22/15.
+//  Copyright © 2015 Carlos Butron. All rights reserved.
 
 import UIKit
 import Foundation
 
 class URLViewController: UIViewController, UIWebViewDelegate {
     var userId = "default_id"
-    let myURL: String = "http://52.91.80.155:80"
+    let myURL: String = "http://52.91.80.155"
     var status = 0
     var pdfurl: String = "default_url"
-    var socket = SocketIOClient(socketURL: "http://52.91.80.155:80")
+    var socket = SocketIOClient(socketURL: "52.91.80.155")
     
     @IBOutlet weak var webView: UIWebView!
-  
-    @IBAction func testbtn(sender: UIButton) {
-        sendViaAirdrop()
-    }
  
 
     func sendViaAirdrop() {
@@ -50,38 +51,53 @@ class URLViewController: UIViewController, UIWebViewDelegate {
 
     
     // send receive confirmation message
-    func sendThroughSocket(senderId: String, url: String) {
-        let data: String = senderId + "%%%" + url
-        socket.emit("receiveResume", data)
+    func sendIdAndUrl(senderId: String, url: String) {
+        self.socket.emit("receiveResume", ["id": senderId, "url": url])
     }
     
     
     // handle message receiver from socket
     func addHandlers() {
-        self.socket.on("sendResume") {[weak self] data, ack in
-            self!.pdfurl = data as! String
-            self!.sendViaAirdrop()
+        self.socket.on("sendResume") {data, ack in
+            print("url received")
+            if let json = data[0] as? NSDictionary {
+                print(json["data"]!)
+                self.pdfurl = json["data"] as! String
+                self.sendViaAirdrop()
+            }
+            
             return
         }
         
-        self.socket.on("userId") {[weak self] data, ask in
-            self!.userId = data as! String
+        self.socket.on("uid") {data, ask in
+            print("uid received")
+            if let json = data[0] as? NSDictionary {
+                print(json["user"]!)
+                self.userId = json["user"] as! String
+            }
             return
         }
         
-    
-        
+        self.socket.on("test") {data, ask in
+            if let json = data[0] as? NSDictionary {
+                print(json["test"]!)
+                self.socket.emit("ios", ["data":"hello!"])
+            }
+            return
+        }
+       
     }
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.delegate = self
         let request = NSURLRequest(URL: NSURL(string: myURL)!)
-        self.webView.loadRequest(request)        // Do any additional setup after loading the view.
-
+        self.webView.loadRequest(request)
+        
         self.addHandlers()
         self.socket.connect()
+    
     }
 
     override func didReceiveMemoryWarning() {

@@ -19,25 +19,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DjF-Az-LPQ">
-                                <rect key="frame" x="-5" y="51" width="330" height="509"/>
+                                <rect key="frame" x="-5" y="33" width="330" height="527"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="509" id="cJZ-cw-V0c"/>
-                                </constraints>
                             </webView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uRI-X1-Gb8">
-                                <rect key="frame" x="20" y="13" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="testbtn:" destination="Av5-dm-Et4" eventType="touchUpInside" id="sRr-3Q-kgz"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DjF-Az-LPQ" firstAttribute="centerX" secondItem="LTv-Ma-00L" secondAttribute="centerX" id="06O-Uc-92j"/>
-                            <constraint firstItem="DjF-Az-LPQ" firstAttribute="leading" secondItem="LTv-Ma-00L" secondAttribute="leadingMargin" constant="-21" id="MdI-Ta-kv4"/>
-                            <constraint firstItem="z09-G6-v9l" firstAttribute="top" secondItem="DjF-Az-LPQ" secondAttribute="bottom" constant="8" symbolic="YES" id="eie-wd-mB6"/>
+                            <constraint firstItem="DjF-Az-LPQ" firstAttribute="top" secondItem="jQi-GC-UWs" secondAttribute="bottom" constant="13" id="0V1-Dc-Lga"/>
+                            <constraint firstItem="DjF-Az-LPQ" firstAttribute="leading" secondItem="LTv-Ma-00L" secondAttribute="leadingMargin" constant="-21" id="31f-18-Ik4"/>
+                            <constraint firstItem="z09-G6-v9l" firstAttribute="top" secondItem="DjF-Az-LPQ" secondAttribute="bottom" constant="8" symbolic="YES" id="cIW-K8-j7p"/>
+                            <constraint firstItem="DjF-Az-LPQ" firstAttribute="centerX" secondItem="LTv-Ma-00L" secondAttribute="centerX" id="yej-bz-z5y"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="AYR-Ru-YDE"/>
